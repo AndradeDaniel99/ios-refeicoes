@@ -20,10 +20,12 @@ class ViewController: UIViewController {
             if let felicidade = Int(felicidade) {
                 let refeicao = Refeicao(nome: nome, felicidade: felicidade)
                 print("comi \(refeicao.nome) e fiquei com felicidade: \(refeicao.felicidade)")
+                navigationController?.popViewController(animated: true)
             } else {
                 print("erro ao tentar criar refeicao")
             }
         }
+        
         
     }
 
