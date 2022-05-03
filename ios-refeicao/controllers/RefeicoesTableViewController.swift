@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RefeicoesTableViewController: UITableViewController {
+class RefeicoesTableViewController: UITableViewController, ViewControllerDelegate {
     
     var refeicoes = [Refeicao(nome: "macarrao", felicidade: 3),
                      Refeicao(nome: "pizza", felicidade: 4),
@@ -48,7 +48,7 @@ class RefeicoesTableViewController: UITableViewController {
         
         if segue.identifier == "adicionar" {
             if let viewController = segue.destination as? ViewController {
-                viewController.refeicoestableViewController = self
+                viewController.delegate = self
             }
         }
     }
