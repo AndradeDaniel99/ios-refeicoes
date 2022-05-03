@@ -7,17 +7,27 @@
 
 import UIKit
 
-protocol ViewControllerDelegate {
+
+//  Encapsulamento: esse protocolo declara a funcao que vai ser
+//  implementada em RefeicoesTableViewController, dessa forma, essa classe
+//  apenas acessa o metodo add e nao tudo da outra classe.
+
+protocol AdicionaRefeicaoDelegate {
     func add(_ refeicao: Refeicao)
 }
 
 class ViewController: UIViewController {
+    
+    // MARK: - Atributos
 
-    var delegate: ViewControllerDelegate?
+    var delegate: AdicionaRefeicaoDelegate?
+    
+    // MARK: - IBOutlets
     
     @IBOutlet var nomeTextField: UITextField?
     @IBOutlet var felicidadeTextField: UITextField?
     
+    // MARK: - IBActions
     
     @IBAction func adicionar(){
         if let nome: String = nomeTextField?.text, let felicidade: String = felicidadeTextField?.text {
