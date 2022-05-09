@@ -11,11 +11,15 @@ class Refeicao: NSObject {
 
     let nome: String
     let felicidade: Int
-    let itens: Array<Item> = []
+    var itens: Array<Item> = []
 
-    init(nome: String, felicidade: Int) {
+    // setar um valor default para um parametro no inicializador faz com que
+    // seja criado um outro inicializador que nao tem como parametro
+    // o parametro que tem valor default
+    init(nome: String, felicidade: Int, itens: [Item] = []) {
         self.nome = nome
         self.felicidade = felicidade
+        self.itens = itens
     }
 
     func totalDeCalorias() -> Double {

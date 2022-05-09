@@ -28,6 +28,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                          Item(nome: "molho apimentado", calorias: 40.0),
                          Item(nome: "manjericao", calorias: 40.0)]
     
+    var itensSelecionados: [Item] = []
+    
     
     // MARK: - IBOutlets
     
@@ -61,6 +63,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         if celula.accessoryType == .none {
             celula.accessoryType = .checkmark
+            
+            let linhaDaTabela = indexPath.row
+            itensSelecionados.append(itens[linhaDaTabela])
         } else {
             celula.accessoryType = .none
         }
@@ -75,8 +80,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func adicionar(){
         if let nome: String = nomeTextField?.text, let felicidade: String = felicidadeTextField?.text {
             if let felicidade = Int(felicidade) {
-                let refeicao = Refeicao(nome: nome, felicidade: felicidade)
+                let refeicao = Refeicao(nome: nome, felicidade: felicidade, itens: itensSelecionados)
+                
+                
+                
                 delegate?.add(refeicao)
+                
+                // funcao para fechar a tela
                 navigationController?.popViewController(animated: true)
             } else {
                 print("erro ao tentar criar refeicao")
