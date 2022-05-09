@@ -59,15 +59,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        // celula recebe a celula selecionada pelo usuario
         guard let celula = tableView.cellForRow(at: indexPath) else { return }
         
         if celula.accessoryType == .none {
             celula.accessoryType = .checkmark
             
+            // assim que o check for marcado, adiciona o item selecionado no array de itens selecionados
             let linhaDaTabela = indexPath.row
             itensSelecionados.append(itens[linhaDaTabela])
         } else {
             celula.accessoryType = .none
+            
+            // remove do array de itens selecionados o item cujo check foi desmarcado
+            let item = itens[indexPath.row]
+            if let position = itensSelecionados.firstIndex(of: item) {
+                itensSelecionados.remove(at: position)
+            }
         }
         
         
