@@ -21,7 +21,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: - Atributos
 
     var delegate: AdicionaRefeicaoDelegate?
-    var itens: [String] = ["molho de tomate", "queijo", "molho apimentado", "manjericao"]
+    //var itens: [String] = ["molho de tomate", "queijo", "molho apimentado", "manjericao"]
+    
+    var itens: [Item] = [Item(nome: "molho de tomate", calorias: 40.0),
+                         Item(nome: "queijo", calorias: 40.0),
+                         Item(nome: "molho apimentado", calorias: 40.0),
+                         Item(nome: "manjericao", calorias: 40.0)]
     
     
     // MARK: - IBOutlets
@@ -37,10 +42,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let linhaDaTabela = indexPath.row
         let item = itens[linhaDaTabela]
+        
         let celula = UITableViewCell(style: .default, reuseIdentifier: nil)
-        celula.textLabel?.text = item
+        celula.textLabel?.text = item.nome
+        
         return celula
     }
     
@@ -51,7 +59,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         guard let celula = tableView.cellForRow(at: indexPath) else { return }
         
-        celula.accessoryType = .checkmark
+        if celula.accessoryType == .none {
+            celula.accessoryType = .checkmark
+        } else {
+            celula.accessoryType = .none
+        }
+        
         
     }
     
