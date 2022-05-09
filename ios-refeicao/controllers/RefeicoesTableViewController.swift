@@ -23,16 +23,41 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // essa parte do codigo popula as celulas com elementos do array refeicoes[]
         let celula = UITableViewCell(style: .default, reuseIdentifier: nil)
         let refeicao = refeicoes[indexPath.row]
         celula.textLabel?.text = refeicao.nome
+        
+        // essa parte do codigo utiliza gestures para disparar um metodo
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(mostrarDetalhes(_:)))
+        celula.addGestureRecognizer(longPress)
+        
         return celula
     }
     
-    
+    // metodo chamado ao apertar o botao adicionar na viewcontroller
     func add(_ refeicao: Refeicao){
         refeicoes.append(refeicao)
         tableView.reloadData()
+    }
+    
+    // metodo chamado ao realizar longpress nas celulas da refeicoestableview
+    @objc func mostrarDetalhes(_ gesture: UILongPressGestureRecognizer){
+        
+        // checagem necessaria para realizar o metodo somente no comeco do gesto
+        if gesture.state == .began {
+            
+            let celula = gesture.view as! UITableViewCell
+            
+            guard let indexPath = tableView.indexPath(for: celula) else { return }
+            
+            let refeicao = refeicoes[indexPath.row]
+            
+            print(refeicao.nome)
+            
+        }
+        
     }
     
     
