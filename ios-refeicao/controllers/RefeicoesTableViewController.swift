@@ -48,10 +48,10 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
         // checagem necessaria para realizar o metodo somente no comeco do gesto
         if gesture.state == .began {
             
+            // a gesture view é uma celula da tableview, indexpath foi recebido da tableview,
+            // refeicao é o objeto refeicao na posicao da celula que foi pressionada
             let celula = gesture.view as! UITableViewCell
-            
             guard let indexPath = tableView.indexPath(for: celula) else { return }
-            
             let refeicao = refeicoes[indexPath.row]
             
             print(refeicao.nome)
