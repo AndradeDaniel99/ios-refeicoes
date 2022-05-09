@@ -37,6 +37,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var felicidadeTextField: UITextField?
     
     
+    // MARK: - View life cycle
+    
+    override func viewDidLoad() {
+        
+        // UIBarButtonItem esse construtor pede um titulo, um estilo para o botao, a localizacao do metodo,
+        // e uma acao a ser realizada quando o botao é selecionado.
+        let botaoAdicionaItem = UIBarButtonItem(title: "adicionar", style: .plain, target: self, action: #selector(adicionarItem))
+        navigationItem.rightBarButtonItem = botaoAdicionaItem
+    }
+    
+    @objc func adicionarItem(){
+        print("adicionar novo item na lista")
+    }
+    
+    
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
