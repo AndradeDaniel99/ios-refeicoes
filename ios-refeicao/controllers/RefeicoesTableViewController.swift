@@ -60,6 +60,10 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
             
             let alerta = UIAlertController(title: refeicao.nome, message: "felicidade: \(refeicao.felicidade)", preferredStyle: .alert)
             
+            let botaoCancelar = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            
+            alerta.addAction(botaoCancelar)
+            
             present(alerta, animated: true, completion: nil)
             
         }
