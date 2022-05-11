@@ -58,12 +58,11 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
             guard let indexPath = tableView.indexPath(for: celula) else { return }
             let refeicao = refeicoes[indexPath.row]
             
+            // criando um modal do tipo UIAlert para mostrar os dados refeicao
             let alerta = UIAlertController(title: refeicao.nome, message: "felicidade: \(refeicao.felicidade)", preferredStyle: .alert)
-            
+            // esse botao é do tipo UIAlertAction
             let botaoCancelar = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            
             alerta.addAction(botaoCancelar)
-            
             present(alerta, animated: true, completion: nil)
             
         }
