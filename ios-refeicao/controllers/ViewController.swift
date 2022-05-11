@@ -65,7 +65,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if let tableView = itensTableView {
             tableView.reloadData()
         } else {
-            Alerta(controller: self).exibe(titulo: "Desculpe", mensagem: "Nao foi possivel atualizar a tabela")
+            Alerta(controller: self).exibe()
         }
     }
     
