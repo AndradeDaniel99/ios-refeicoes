@@ -118,20 +118,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: - IBActions
     
     @IBAction func adicionar(){
-        if let nome: String = nomeTextField?.text, let felicidade: String = felicidadeTextField?.text {
-            if let felicidade = Int(felicidade) {
-                let refeicao = Refeicao(nome: nome, felicidade: felicidade, itens: itensSelecionados)
-                
-                
-                
-                delegate?.add(refeicao)
-                
-                // funcao para fechar a tela
-                navigationController?.popViewController(animated: true)
-            } else {
-                print("erro ao tentar criar refeicao")
-            }
+        
+        guard let nome = nomeTextField?.text else {
+            
+            Alerta.init(controller: self).exibe(mensagem: "erro ao ler campo nome")
+            return
         }
+        
+        guard let felicidadeDaRefeicao = felicidadeTextField?.text, let felicidade = Int(felicidadeDaRefeicao) else{
+            
+            Alerta(controller: self).exibe(mensagem: "erro ao ler campo felicidade")
+            return
+        }
+        
+        let refeicao = Refeicao(nome: nome, felicidade: felicidade, itens: itensSelecionados)
+        
+        delegate?.add(refeicao)
+        
+        // funcao para fechar a tela
+        navigationController?.popViewController(animated: true)
     }
 
 }
