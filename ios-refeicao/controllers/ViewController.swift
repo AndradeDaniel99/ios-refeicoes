@@ -26,7 +26,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: - Atributos
 
     var delegate: AdicionaRefeicaoDelegate?
-    //var itens: [String] = ["molho de tomate", "queijo", "molho apimentado", "manjericao"]
     
     var itens: [Item] = [Item(nome: "molho de tomate", calorias: 40.0),
                          Item(nome: "queijo", calorias: 40.0),
@@ -106,7 +105,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         
     }
-    
     
     
     // MARK: - IBActions
