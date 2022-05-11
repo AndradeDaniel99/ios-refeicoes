@@ -33,10 +33,10 @@ class Refeicao: NSObject {
     }
     
     func detalhes() -> String {
-        var mensagem = "Felicidade: \(felicidade)"
+        var mensagem = "Felicidade: \(felicidade)\n"
         
         for item in itens {
-            mensagem += ", \(item.nome) - calorias: \(item.calorias)"
+            mensagem += "\(item.nome): \(item.calorias) calorias\n"
         }
         return mensagem
     }

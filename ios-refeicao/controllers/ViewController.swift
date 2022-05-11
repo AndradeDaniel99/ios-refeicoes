@@ -47,15 +47,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // UIBarButtonItem esse construtor pede um titulo, um estilo para o botao, a localizacao do metodo,
         // e uma acao a ser realizada quando o botao é selecionado.
-        let botaoAdicionaItem = UIBarButtonItem(title: "Adicionar", style: .plain, target: self, action: #selector(adicionarItem))
+        let botaoAdicionaItem = UIBarButtonItem(title: "Adicionar item", style: .plain, target: self, action: #selector(adicionarItem))
         navigationItem.rightBarButtonItem = botaoAdicionaItem
     }
     
+    // funcao chamada ao pressionar o BarButton 'Adicionar itens' na viewcontroller,
+    // abre a tela de adicionar itens
     @objc func adicionarItem(){
         let adicionarItensViewController = AdicionarItensViewController(delegate: self)
         navigationController?.pushViewController(adicionarItensViewController, animated: true)
     }
     
+    // adiciona um item à tableView de adicionar refeicao e recarrega a tableView
     func add(_ item: Item) {
         itens.append(item)
         itensTableView.reloadData()
