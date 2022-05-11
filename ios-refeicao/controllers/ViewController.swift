@@ -110,8 +110,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 itensSelecionados.remove(at: position)
             }
         }
+    }
+    
+    func recuperarRefeicaoDoFormulario()-> Refeicao? {
+        guard let nome = nomeTextField?.text else {
+            
+            Alerta.init(controller: self).exibe(mensagem: "erro ao ler campo nome")
+            return nil
+        }
         
+        guard let felicidadeDaRefeicao = felicidadeTextField?.text, let felicidade = Int(felicidadeDaRefeicao) else{
+            
+            Alerta(controller: self).exibe(mensagem: "erro ao ler campo felicidade")
+            return nil
+        }
         
+        let refeicao = Refeicao(nome: nome, felicidade: felicidade, itens: itensSelecionados)
+        
+        return refeicao
     }
     
     
@@ -119,19 +135,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func adicionar(){
         
-        guard let nome = nomeTextField?.text else {
-            
-            Alerta.init(controller: self).exibe(mensagem: "erro ao ler campo nome")
+        guard let refeicao = recuperarRefeicaoDoFormulario() else {
             return
         }
-        
-        guard let felicidadeDaRefeicao = felicidadeTextField?.text, let felicidade = Int(felicidadeDaRefeicao) else{
-            
-            Alerta(controller: self).exibe(mensagem: "erro ao ler campo felicidade")
-            return
-        }
-        
-        let refeicao = Refeicao(nome: nome, felicidade: felicidade, itens: itensSelecionados)
         
         delegate?.add(refeicao)
         
