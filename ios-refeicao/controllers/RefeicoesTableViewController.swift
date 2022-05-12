@@ -60,13 +60,21 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
             
             // criando um modal do tipo UIAlert para mostrar os dados refeicao
             let alerta = UIAlertController(title: refeicao.nome, message: refeicao.detalhes(), preferredStyle: .alert)
-            // esse botao é do tipo UIAlertAction
-            let botaoCancelar = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+
+            let botaoCancelar = UIAlertAction(title: "Ok", style: .cancel)
             alerta.addAction(botaoCancelar)
+            
+            let botaoRemover = UIAlertAction(title: "Remover", style: .destructive, handler: removeRefeicao)
+            alerta.addAction(botaoRemover)
+            
             present(alerta, animated: true, completion: nil)
             
         }
         
+    }
+    
+    func removeRefeicao(alerta: UIAlertAction){
+        print("remover refeicao")
     }
     
     
