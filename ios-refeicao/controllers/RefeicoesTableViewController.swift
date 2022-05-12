@@ -42,6 +42,10 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
     // metodo chamado ao apertar o botao adicionar na viewcontroller
     func add(_ refeicao: Refeicao){
         refeicoes.append(refeicao)
+        
+        let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        
+        
         tableView.reloadData()
     }
     
