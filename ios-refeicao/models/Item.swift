@@ -23,7 +23,8 @@ class Item: NSObject, NSCoding {
     }
     
     required init?(coder: NSCoder) {
-        <#code#>
+        nome = coder.decodeObject(forKey: "nome") as! String
+        calorias = coder.decodeDouble(forKey: "calorias")
     }
     
 
