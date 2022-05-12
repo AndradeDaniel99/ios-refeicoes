@@ -7,11 +7,16 @@
 
 import UIKit
 
-class Refeicao: NSObject {
+class Refeicao: NSObject, NSCoding {
+
+    // MARK: - atributos
 
     let nome: String
     let felicidade: Int
     var itens: Array<Item> = []
+    
+    
+    // MARK: - init
 
     // setar um valor default para um parametro no inicializador faz com que
     // seja criado um outro inicializador que nao tem como parametro
@@ -21,6 +26,22 @@ class Refeicao: NSObject {
         self.felicidade = felicidade
         self.itens = itens
     }
+    
+    
+    // MARK: - NSCoding
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(nome, forKey: "nome")
+        coder.encode(felicidade, forKey: "felicidade")
+        coder.encode(itens, forKey: "itens")
+    }
+    
+    required init?(coder: NSCoder) {
+        <#code#>
+    }
+    
+    
+    // MARK: - metodos
 
     func totalDeCalorias() -> Double {
         var total = 0.0
