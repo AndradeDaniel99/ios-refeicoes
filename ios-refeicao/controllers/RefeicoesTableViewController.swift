@@ -58,6 +58,11 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
             guard let indexPath = tableView.indexPath(for: celula) else { return }
             let refeicao = refeicoes[indexPath.row]
             
+            func removeRefeicao(alerta: UIAlertAction){
+                refeicoes.remove(at: indexPath.row)
+                tableView.reloadData()
+            }
+            
             // criando um modal do tipo UIAlert para mostrar os dados refeicao
             let alerta = UIAlertController(title: refeicao.nome, message: refeicao.detalhes(), preferredStyle: .alert)
 
@@ -71,10 +76,6 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
             
         }
         
-    }
-    
-    func removeRefeicao(alerta: UIAlertAction){
-        print("remover refeicao")
     }
     
     
