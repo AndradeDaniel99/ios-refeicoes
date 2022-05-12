@@ -14,6 +14,25 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
                      Refeicao(nome: "yakissoba", felicidade: 5)]
     
     
+    override func viewDidLoad() {
+        
+        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let caminho = diretorio.appendingPathComponent("refeicao")
+        
+        do {
+            let dados = try Data(contentsOf: caminho)
+            
+            guard let refeicoesSalvas = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as? Array<Refeicao> { return }
+            
+            refeicoes = refeicoesSalvas
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        
+    }
+    
     //toda tableviewcontroller precisa de 2 metodos:
     //um pra falar o numero de colunas da tabela, (numberOfRowsInSection)
     //e outro pra dizer o conteudo das celulas    (cellForRowAt)
@@ -45,7 +64,6 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
         tableView.reloadData()
         
         guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        
         let caminho = diretorio.appendingPathComponent("refeicao")
         
         
