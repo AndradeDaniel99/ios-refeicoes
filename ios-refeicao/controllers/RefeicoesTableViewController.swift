@@ -42,11 +42,24 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
     // metodo chamado ao apertar o botao adicionar na viewcontroller
     func add(_ refeicao: Refeicao){
         refeicoes.append(refeicao)
-        
-        let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        
-        
         tableView.reloadData()
+        
+        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        
+        let caminho = diretorio.appendingPathComponent("refeicao")
+        
+        
+        // para utilizar try tem q ser dentro de um do
+        do {
+            let dados = try NSKeyedArchiver.archivedData(withRootObject: refeicoes, requiringSecureCoding: false)
+            
+            try dados.write(to: caminho)
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        
     }
     
     // metodo chamado ao realizar longpress nas celulas da tableView
