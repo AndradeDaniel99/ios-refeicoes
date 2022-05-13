@@ -22,7 +22,7 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
         do {
             let dados = try Data(contentsOf: caminho)
             
-            guard let refeicoesSalvas = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as? Array<Refeicao> { return }
+            guard let refeicoesSalvas = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as? Array<Refeicao> else { return }
             
             refeicoes = refeicoesSalvas
             
