@@ -35,7 +35,7 @@ class RefeicaoDao {
             guard let refeicoesSalvas = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as? Array<Refeicao> else { return [] }
             
             return refeicoesSalvas
-            
+                
         } catch {
             print(error.localizedDescription)
             return []

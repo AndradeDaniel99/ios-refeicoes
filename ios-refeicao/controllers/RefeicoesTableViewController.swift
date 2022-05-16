@@ -9,7 +9,7 @@ import UIKit
 
 class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDelegate {
     
-    var refeicoes: Array<Refeicao> = []
+    var refeicoes: [Refeicao] = []
     
     
     override func viewDidLoad() {
