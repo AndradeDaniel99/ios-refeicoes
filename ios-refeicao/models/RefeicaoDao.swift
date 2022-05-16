@@ -26,5 +26,11 @@ class RefeicaoDao {
         
     }
     
+    func recuperaCaminho() -> URL? {
+        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        let caminho = diretorio.appendingPathComponent("refeicao")
+        return caminho
+    }
+    
     
 }
