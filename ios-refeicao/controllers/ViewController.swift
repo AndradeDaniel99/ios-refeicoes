@@ -54,6 +54,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         do {
             let dados = try Data(contentsOf: diretorio)
             let itensSalvos = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as! Array<Item>
+            itens = itensSalvos
         } catch  {
             print(error.localizedDescription)
         }

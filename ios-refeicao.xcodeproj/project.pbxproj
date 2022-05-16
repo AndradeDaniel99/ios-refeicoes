@@ -18,6 +18,7 @@
 		DF592E942819F7BC00F5A001 /* Refeicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF592E932819F7BC00F5A001 /* Refeicao.swift */; };
 		DF592E962819F7D500F5A001 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF592E952819F7D500F5A001 /* Item.swift */; };
 		DF592E982820573100F5A001 /* RefeicoesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF592E972820573100F5A001 /* RefeicoesTableViewController.swift */; };
+		DF5C2FEF2832D76000B24BBB /* RefeicaoDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C2FEE2832D76000B24BBB /* RefeicaoDao.swift */; };
 		DF5FAA8F28295E9B00539B60 /* AdicionarItensViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5FAA8D28295E9B00539B60 /* AdicionarItensViewController.swift */; };
 		DF5FAA9028295E9B00539B60 /* AdicionarItensViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF5FAA8E28295E9B00539B60 /* AdicionarItensViewController.xib */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		DF592E932819F7BC00F5A001 /* Refeicao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refeicao.swift; sourceTree = "<group>"; };
 		DF592E952819F7D500F5A001 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		DF592E972820573100F5A001 /* RefeicoesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefeicoesTableViewController.swift; sourceTree = "<group>"; };
+		DF5C2FEE2832D76000B24BBB /* RefeicaoDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefeicaoDao.swift; sourceTree = "<group>"; };
 		DF5FAA8D28295E9B00539B60 /* AdicionarItensViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarItensViewController.swift; sourceTree = "<group>"; };
 		DF5FAA8E28295E9B00539B60 /* AdicionarItensViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdicionarItensViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +90,7 @@
 				DF592E932819F7BC00F5A001 /* Refeicao.swift */,
 				DF592E952819F7D500F5A001 /* Item.swift */,
 				DF325902282C6187004233A6 /* Alerta.swift */,
+				DF5C2FEE2832D76000B24BBB /* RefeicaoDao.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				DF592E962819F7D500F5A001 /* Item.swift in Sources */,
 				DF592E812819F6C200F5A001 /* ViewController.swift in Sources */,
 				DF338FFB282D879A00ACE7C6 /* RemoveRefeicaoViewController.swift in Sources */,
+				DF5C2FEF2832D76000B24BBB /* RefeicaoDao.swift in Sources */,
 				DF5FAA8F28295E9B00539B60 /* AdicionarItensViewController.swift in Sources */,
 				DF592E7D2819F6C200F5A001 /* AppDelegate.swift in Sources */,
 				DF592E982820573100F5A001 /* RefeicoesTableViewController.swift in Sources */,
