@@ -16,8 +16,7 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
     
     override func viewDidLoad() {
         
-        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let caminho = diretorio.appendingPathComponent("refeicao")
+        guard let caminho = recuperaCaminho() else { return }
         
         do {
             let dados = try Data(contentsOf: caminho)
@@ -31,6 +30,12 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
         }
         
         
+    }
+    
+    func recuperaCaminho() -> URL? {
+        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        let caminho = diretorio.appendingPathComponent("refeicao")
+        return caminho
     }
     
     //toda tableviewcontroller precisa de 2 metodos:
@@ -63,9 +68,7 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
         refeicoes.append(refeicao)
         tableView.reloadData()
         
-        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let caminho = diretorio.appendingPathComponent("refeicao")
-        
+        guard let caminho = recuperaCaminho() else { return }
         
         // para utilizar try tem q ser dentro de um do
         do {
