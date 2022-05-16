@@ -32,11 +32,6 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
         
     }
     
-    func recuperaCaminho() -> URL? {
-        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        let caminho = diretorio.appendingPathComponent("refeicao")
-        return caminho
-    }
     
     //toda tableviewcontroller precisa de 2 metodos:
     //um pra falar o numero de colunas da tabela, (numberOfRowsInSection)
@@ -68,19 +63,7 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
         refeicoes.append(refeicao)
         tableView.reloadData()
         
-        guard let caminho = recuperaCaminho() else { return }
-        
-        // para utilizar try tem q ser dentro de um do
-        do {
-            let dados = try NSKeyedArchiver.archivedData(withRootObject: refeicoes, requiringSecureCoding: false)
-            
-            try dados.write(to: caminho)
-            
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        
+        RefeicaoDao().save(refeicoes)
     }
     
     // metodo chamado ao realizar longpress nas celulas da tableView
