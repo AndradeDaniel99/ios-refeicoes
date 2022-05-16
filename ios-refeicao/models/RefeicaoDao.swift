@@ -26,6 +26,23 @@ class RefeicaoDao {
         
     }
     
+    func recupera() -> [Refeicao] {
+        guard let caminho = recuperaCaminho() else { return [] }
+        
+        do {
+            let dados = try Data(contentsOf: caminho)
+            
+            guard let refeicoesSalvas = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as? Array<Refeicao> else { return [] }
+            
+            return refeicoesSalvas
+            
+        } catch {
+            print(error.localizedDescription)
+            return []
+        }
+    }
+    
+    
     func recuperaCaminho() -> URL? {
         guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         let caminho = diretorio.appendingPathComponent("refeicao")

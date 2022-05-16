@@ -16,18 +16,7 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
     
     override func viewDidLoad() {
         
-        guard let caminho = recuperaCaminho() else { return }
-        
-        do {
-            let dados = try Data(contentsOf: caminho)
-            
-            guard let refeicoesSalvas = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as? Array<Refeicao> else { return }
-            
-            refeicoes = refeicoesSalvas
-            
-        } catch {
-            print(error.localizedDescription)
-        }
+        let listaRefeicoes = RefeicaoDao().recupera()
         
         
     }
