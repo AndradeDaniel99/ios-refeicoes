@@ -49,6 +49,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // e uma acao a ser realizada quando o botao é selecionado.
         let botaoAdicionaItem = UIBarButtonItem(title: "Adicionar item", style: .plain, target: self, action: #selector(adicionarItem))
         navigationItem.rightBarButtonItem = botaoAdicionaItem
+        
+        guard let diretorio = recuperaDiretorio() else { return }
+        do {
+            let dados = try Data(contentsOf: diretorio)
+            let itensSalvos = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as! Array<Item>
+        } catch  {
+            print(error.localizedDescription)
+        }
+        
     }
     
     // funcao chamada ao pressionar o BarButton 'Adicionar itens' na viewcontroller,
