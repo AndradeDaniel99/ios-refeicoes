@@ -9,15 +9,12 @@ import UIKit
 
 class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDelegate {
     
-    var refeicoes = [Refeicao(nome: "macarrao", felicidade: 3),
-                     Refeicao(nome: "pizza", felicidade: 4),
-                     Refeicao(nome: "yakissoba", felicidade: 5)]
+    var refeicoes: Array<Refeicao> = []
     
     
     override func viewDidLoad() {
         
-        let listaRefeicoes = RefeicaoDao().recupera()
-        
+        refeicoes = RefeicaoDao().recupera()
         
     }
     
