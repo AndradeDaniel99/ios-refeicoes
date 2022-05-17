@@ -27,10 +27,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     var delegate: AdicionaRefeicaoDelegate?
     
-    var itens: [Item] = [Item(nome: "molho de tomate", calorias: 40.0),
-                         Item(nome: "queijo", calorias: 40.0),
-                         Item(nome: "molho apimentado", calorias: 40.0),
-                         Item(nome: "manjericao", calorias: 40.0)]
+    var itens: [Item] = []
     
     var itensSelecionados: [Item] = []
     
@@ -50,15 +47,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let botaoAdicionaItem = UIBarButtonItem(title: "Adicionar item", style: .plain, target: self, action: #selector(adicionarItem))
         navigationItem.rightBarButtonItem = botaoAdicionaItem
         
-        guard let diretorio = recuperaDiretorio() else { return }
-        do {
-            let dados = try Data(contentsOf: diretorio)
-            let itensSalvos = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as! Array<Item>
-            itens = itensSalvos
-        } catch  {
-            print(error.localizedDescription)
-        }
+        recuperaItens()
         
+    }
+    
+    func recuperaItens(){
+        itens = ItemDao().recupera()
     }
     
     // funcao chamada ao pressionar o BarButton 'Adicionar itens' na viewcontroller,
@@ -71,7 +65,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // adiciona um item à tableView de adicionar refeicao e recarrega a tableView
     func add(_ item: Item) {
         itens.append(item)
-        
+        ItemDao().save(itens)
         if let tableView = itensTableView {
             tableView.reloadData()
         } else {

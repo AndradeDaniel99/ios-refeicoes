@@ -19,6 +19,19 @@ class ItemDao {
         }
     }
     
+    func recupera() -> [Item] {
+        
+        do {
+            guard let diretorio = recuperaDiretorio() else { return [] }
+            let dados = try Data(contentsOf: diretorio)
+            let itensSalvos = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as! Array<Item>
+           return itensSalvos
+        } catch  {
+            print(error.localizedDescription)
+            return []
+        }
+    }
+    
     func recuperaDiretorio()-> URL? {
         guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         let caminho = diretorio.appendingPathComponent("itens")
